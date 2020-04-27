@@ -1,63 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+
 import Information from './info-json';
 
-class App extends Component {
+function App() {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  constructor(){
-    super();
+  const [searchResults, setSearchResults] = useState([]);
 
-    this.state={
-      search:null
-    };
-  }
+  useEffect(() => {
+     const results = Information.filter(data =>
+       data.name.toLowerCase().includes(searchTerm) 
+     );
 
-  searchSpace=(event)=>{
-    let keyword = event.target.value;
-    this.setState({search:keyword})
-  }
+     setSearchResults(results);
 
-  render(){
-    const styleInfo = {
-      paddingRight:'10px'
-    }
-    const elementStyle ={
-      border:'solid',
-      borderRadius:'10px',
-      position:'relative',
-      left:'10vh',
-      height:'3vh',
-      width:'20vh',
-      marginTop:'5vh',
-      marginBottom:'10vh'
-    }
-    const items = Information.filter((data)=>{
-      if(this.state.search == null)
-          return data
-      else if(data.name.toLowerCase().includes(this.state.search.toLowerCase()) || data.country.toLowerCase().includes(this.state.search.toLowerCase())){
-          return data
-      }
-    }).map(data=>{
-      return(
-      <div>
-        <ul>
-          <li style={{position:'relative',left:'10vh'}}>
-            <span style={styleInfo}>{data.name}</span>
-            <span style={styleInfo}>{data.age}</span>
-            <span style={styleInfo}>{data.country}</span>
-          </li>
-        </ul>
-      </div>
-      )
-    })
-
+   }, [searchTerm]);
+ 
+   const CountryDetail = props => {
+    const { name, age, country } = props;
     return (
-      <div>
-      <input type="text" placeholder="Enter item to be searched" style={elementStyle} onChange={(e)=>this.searchSpace(e)} />
-      {items}
-      </div>
-    )
-  }
-}
+      <>
+        <p>{name}</p>
+        <p>{age}</p>
+        <p>{country}</p>
+      </>
+    );
+  };
+
+   return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={e => setSearchTerm(e.target.value)}
+      />
+      {searchResults.map((name, id) => (
+        <CountryDetail key={id} {...name} />
+      ))}
+    </div>
+  );
+ }
 
 export default App;

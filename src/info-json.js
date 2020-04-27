@@ -1,58 +1,33 @@
 const Information = [
   {
+    "id": 1,
     "name":"Samule",
-    "age":21,
-    "country":"USA"
+    "age":25,
+    "country": ["USA","England"]
   },
   {
+    "id": 2,
     "name":"Sam",
-    "age":21,
-    "country":"USA"
+    "age":19,
+    "country": ["USA"]
   },
   {
+    "id": 3,
     "name":"Mark",
-    "age":21,
-    "country":"Africa"
+    "age":17,
+    "country": ["Africa","England"]
   },
   {
+    "id": 4,
     "name":"Markus",
     "age":21,
-    "country":"Africa"
+    "country": ["Africa","England"]
   },
   {
-    "name":"Aayush",
-    "age":21,
-    "country":"India"
-  },
-  {
-    "name":"Sean",
-    "age":21,
-    "country":"Ireland"
-  },
-  {
-    "name":"Eduardo",
-    "age":21,
-    "country":"France"
-  },
-  {
-    "name":"Dustin",
-    "age":21,
-    "country":"Spain"
-  },
-  {
-    "name":"Alexendra",
-    "age":21,
-    "country":"USA"
-  },
-  {
-    "name":"Lee",
-    "age":21,
-    "country":"China"
-  },
-  {
-    "name":"Jim",
-    "age":21,
-    "country":"Korea"
+    "id": 5,
+    "name":"Markus",
+    "age":29,
+    "country": ["Africa","Nigeria"]
   }
 ];
 
