@@ -9,7 +9,7 @@ export default function App() {
   const handleChange = e => setSearchTerm(e.target.value);
 
   useEffect(() => {
-    const results = Information.filter(o => o.keywords.includes(searchTerm));
+    const results = Information.filter(data => data.keywords.includes(searchTerm));
 
     setSearchResults(results);
 
@@ -68,10 +68,9 @@ export default function App() {
       <h1>Results</h1>
          <ul>
           {searchResults &&
-            searchResults.map(item => <ul key={item.id}>
+            searchResults.map(item => <ul key={item.id} style={{border: "2px solid black", margin: "5px"}}>
               <li>{item.name}</li>
               <li>{item.age}</li>
-              {/* <li>{item.emoji}</li> */}
             </ul>)}
         </ul>
       </div>
